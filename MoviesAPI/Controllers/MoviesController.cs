@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Interfaces;
+using MoviesAPI.Models.Omdb;
 
 namespace MoviesAPI.Controllers
 {
@@ -16,10 +17,12 @@ namespace MoviesAPI.Controllers
             _moviesService = moviesService;
         }
 
-        [HttpGet(Name = "Movies")]
-        public IActionResult Get()
+        [HttpGet()]
+        [Route("Search/{query}")]
+        public async Task<ActionResult<OmdbSearchResponse>> Get(string query)
         {
-            return Ok();
+            var response = await _moviesService.SearchMovie(query);
+            return Ok(response);
         }
     }
 }

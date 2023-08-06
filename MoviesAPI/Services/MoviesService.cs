@@ -1,5 +1,8 @@
 ﻿using MoviesAPI.Interfaces;
 using MoviesAPI.Models.AppSettings;
+using MoviesAPI.Models.Omdb;
+using Newtonsoft.Json;
+using System.Web;
 
 namespace MoviesAPI.Services
 {
@@ -16,9 +19,17 @@ namespace MoviesAPI.Services
             _httpClient = new HttpClient();
         }
 
-        public void WriteMessage(string message)
+        public async Task<OmdbSearchResponse?> SearchMovie(string searchQuery)
         {
-            Console.WriteLine($"MyDependency.WriteMessage called. Message: {message}");
+            var builder = new UriBuilder(_omdbSettings.BaseUrl);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            query["t"] = searchQuery;
+            query["apikey"] = _omdbSettings.Apikey;
+            builder.Query = query.ToString();
+
+            var response = await _httpClient.GetAsync(builder.ToString());
+            var jsonString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<OmdbSearchResponse>(jsonString);
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace MoviesAPI.Interfaces
+﻿using MoviesAPI.Models.Omdb;
+
+namespace MoviesAPI.Interfaces
 {
     public interface IMoviesService
     {
-        void WriteMessage(string message);
+        Task<OmdbSearchResponse?> SearchMovie(string searchQuery);
     }
 }

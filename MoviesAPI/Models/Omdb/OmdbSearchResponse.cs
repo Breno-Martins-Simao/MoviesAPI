@@ -1,4 +1,6 @@
-﻿namespace MoviesAPI.Models.Omdb
+﻿using MoviesAPI.Models.Omdb.Properties;
+
+namespace MoviesAPI.Models.Omdb
 {
     public class OmdbSearchResponse
     {
@@ -13,5 +15,16 @@
         public string? Actors { get; set; }
         public string? Plot { get; set; }
         public string? Language { get; set; }
+        public string? Country { get; set; }
+        public string? Awards { get; set; }
+        public string? Poster { get; set; }
+        public string? Metascore { get; set; }
+        public string? imdbRating { get; set; }
+        public string? imdbVotes { get; set; }
+        public string? imdbId { get; set; }
+        public string? Type { get; set; }
+        public string? totalSeasson { get; set; }
+        public string? Response { get; set; }
+        public List<Ratings>? Ratings { get; set; }
     }
 }
