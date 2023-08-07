@@ -19,8 +19,9 @@ namespace MoviesAPI.Services
             _httpClient = new HttpClient();
         }
 
-        public async Task<OmdbSearchResponse?> SearchMovie(string searchQuery)
+        public async Task<OmdbSearchResponse> SearchMovie(string searchQuery)
         {
+#nullable disable
             var builder = new UriBuilder(_omdbSettings.BaseUrl);
             var query = HttpUtility.ParseQueryString(builder.Query);
             query["t"] = searchQuery;

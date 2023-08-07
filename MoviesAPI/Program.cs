@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 //Dependencies "Signups"
 builder.Services.AddScoped<IMoviesService, MoviesService>();
+builder.Services.AddScoped<IDbService, DbService>();
 
 var app = builder.Build();
 

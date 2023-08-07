@@ -5,6 +5,6 @@
     {
         public int Id { get; set; }
         public string Query { get; set; }
-        public Movie MovieResulted { get; set; }
+        public virtual Movie MovieResulted { get; set; }
     }
 }

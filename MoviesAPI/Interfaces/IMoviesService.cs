@@ -4,6 +4,6 @@ namespace MoviesAPI.Interfaces
 {
     public interface IMoviesService
     {
-        Task<OmdbSearchResponse?> SearchMovie(string searchQuery);
+        Task<OmdbSearchResponse> SearchMovie(string searchQuery);
     }
 }
