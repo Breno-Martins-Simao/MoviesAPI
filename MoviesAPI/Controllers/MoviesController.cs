@@ -31,18 +31,14 @@ namespace MoviesAPI.Controllers
 
         [HttpGet()]
         [Route("Search")]
-        public async Task<ActionResult<List<SearchHistory>>> GetHistory()
+        public ActionResult<List<SearchHistory>> GetHistory()
         {
             var searches = _dbService.GetSearches();
-            foreach(var search in searches)
-            {
-                Console.WriteLine(search.MovieResulted == null);
-            }
             return searches;
         }
 
         [HttpGet()]
-        public async Task<ActionResult<List<Movie>>> GetMovies()
+        public ActionResult<List<Movie>> GetMovies()
         {
             var movies = _dbService.GetMovies();
             return movies;
