@@ -30,7 +30,6 @@
   <ItemGroup>
     <Folder Include="Mock\" />
     <Folder Include="Helper\" />
-    <Folder Include="Systems\Controllers\" />
     <Folder Include="Systems\Services\" />
   </ItemGroup>
 
