@@ -34,16 +34,16 @@ namespace MoviesAPI.Controllers
         public async Task<ActionResult<List<SearchHistory>>> GetHistory()
         {
             var searches = _dbService.GetSearches();
-            if (searches.Count > 0) return NoContent();
-            return searches;
+            if (searches.Count == 0) return NoContent();
+            return Ok(searches);
         }
 
         [HttpGet()]
         public ActionResult<List<Movie>> GetMovies()
         {
             var movies = _dbService.GetMovies();
-            if (movies.Count > 0) return NoContent();
-            return movies;
+            if (movies.Count == 0) return NoContent();
+            return Ok(movies);
         }
     }
 }

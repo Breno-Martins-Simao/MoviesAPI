@@ -6,11 +6,7 @@ using MoviesApi.Tests.Mock;
 using MoviesAPI.Controllers;
 using MoviesAPI.Interfaces;
 using MoviesAPI.Models.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MoviesApi.Tests.Utils;
 
 namespace MoviesApi.Tests.Systems.Controllers
 {
@@ -27,6 +23,8 @@ namespace MoviesApi.Tests.Systems.Controllers
             var dbServiceMock = new Mock<IDbService>();
             dbServiceMock.Setup(_ => _.GetSearches())
                 .Returns(DbMockData.GetSearches());
+            dbServiceMock.Setup(_ => _.GetMovies())
+                .Returns(DbMockData.GetMovies());
             IDbService dbService = dbServiceMock.Object;
 
             /*Movie Service Setup*/
@@ -40,9 +38,10 @@ namespace MoviesApi.Tests.Systems.Controllers
 
             //Act=============================
             var result = await sut.GetHistory();
+            var statusCode = Utilities.GetStatusCode<ActionResult<List<SearchHistory>>>(result);
             //Assert==========================
-            //result.GetType().Should().Be(typeof(ActionResult<List<SearchHistory>>));
-            Console.WriteLine("");
+            result.GetType().Should().Be(typeof(ActionResult<List<SearchHistory>>));
+            Assert.True(statusCode == 200);
         }
     }
 }
