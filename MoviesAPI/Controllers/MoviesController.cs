@@ -31,9 +31,10 @@ namespace MoviesAPI.Controllers
 
         [HttpGet()]
         [Route("Search")]
-        public ActionResult<List<SearchHistory>> GetHistory()
+        public async Task<ActionResult<List<SearchHistory>>> GetHistory()
         {
             var searches = _dbService.GetSearches();
+            if (searches.Count > 0) return NoContent();
             return searches;
         }
 
@@ -41,6 +42,7 @@ namespace MoviesAPI.Controllers
         public ActionResult<List<Movie>> GetMovies()
         {
             var movies = _dbService.GetMovies();
+            if (movies.Count > 0) return NoContent();
             return movies;
         }
     }

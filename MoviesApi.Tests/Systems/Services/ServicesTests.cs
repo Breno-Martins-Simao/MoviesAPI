@@ -1,6 +1,6 @@
 using MoviesAPI.Services;
 
-namespace MoviesApi.Service.Tests
+namespace MoviesApi.Tests.Systems.Services
 {
     public class DbTests
     {

@@ -5,7 +5,12 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesAPI", "MoviesAPI\MoviesAPI.csproj", "{D2537B96-41EA-448E-89B6-7883C37B5BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesApi.Tests", "MoviesApi.Tests\MoviesApi.Tests.csproj", "{42BCA7C3-76AD-4660-8463-6BC8054F23B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesApi.Tests", "MoviesApi.Tests\MoviesApi.Tests.csproj", "{42BCA7C3-76AD-4660-8463-6BC8054F23B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ABDD9545-D5FE-4BD1-928B-24A2CD85026F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
