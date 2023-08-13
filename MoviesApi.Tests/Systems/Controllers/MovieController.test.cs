@@ -5,6 +5,7 @@ using Moq;
 using MoviesApi.Tests.Mock;
 using MoviesAPI.Controllers;
 using MoviesAPI.Interfaces;
+using MoviesAPI.Models.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace MoviesApi.Tests.Systems.Controllers
         [Fact]
         public async Task GetHistory_ShouldReturn200Status()
         {
-            ///Arrange
+            ///Arrange===========================
             var loggerMock = new Mock<ILogger<MoviesController>>();
             ILogger<MoviesController> logger = loggerMock.Object;
 
@@ -37,11 +38,10 @@ namespace MoviesApi.Tests.Systems.Controllers
             /*System Under Test*/
             var sut = new MoviesController(logger, movieService, dbService);
 
-            //Act
+            //Act=============================
             var result = await sut.GetHistory();
-
-            //Assert
-            result.GetType().Should().Be(typeof(OkObjectResult));
+            //Assert==========================
+            result.GetType().Should().Be(typeof(ActionResult<List<SearchHistory>>));
         }
     }
 }
