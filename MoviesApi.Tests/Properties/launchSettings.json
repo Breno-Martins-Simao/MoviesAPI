@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MoviesApi.Tests": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
