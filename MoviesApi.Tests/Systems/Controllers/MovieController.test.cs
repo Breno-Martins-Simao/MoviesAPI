@@ -16,22 +16,14 @@ namespace MoviesApi.Tests.Systems.Controllers
         public async Task GetHistory_ShouldReturn200Status()
         {
             ///Arrange===========================
-            var loggerMock = new Mock<ILogger<MoviesController>>();
-            ILogger<MoviesController> logger = loggerMock.Object;
-
-            /*Db Service Setup*/
-            var dbServiceMock = new Mock<IDbService>();
-            dbServiceMock.Setup(_ => _.GetSearches())
-                .Returns(DbMockData.GetSearches());
-            dbServiceMock.Setup(_ => _.GetMovies())
-                .Returns(DbMockData.GetMovies());
-            IDbService dbService = dbServiceMock.Object;
-
+            /*Arrange Mock object*/
+            var mockFactory = new MockServicesFactory();
+            /*Logger Setup*/
+            var logger = mockFactory.MockIlogger<MoviesController>();
             /*Movie Service Setup*/
-            var movieServiceMock = new Mock<IMoviesService>();
-            movieServiceMock.Setup(_ => _.SearchMovie(It.IsAny<string>()))
-                .Returns(MovieServiceMockData.SearchMovie());
-            IMoviesService movieService = movieServiceMock.Object;
+            var movieService = mockFactory.MockIMovieService();
+            /*Db Service Setup*/
+            var dbService = mockFactory.MockIDbService(DbMockData.GetSearches(), DbMockData.GetMovies());            
 
             /*System Under Test*/
             var sut = new MoviesController(logger, movieService, dbService);

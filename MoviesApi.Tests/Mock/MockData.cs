@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using MoviesAPI.Models.Database;
+using MoviesAPI.Models.Omdb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,17 @@ namespace MoviesApi.Tests.Mock
         {
             var movies = new List<Movie>();
             return movies;
+        }
+    }
+
+    public class MovieServiceMockData
+    {
+        private static Fixture _Fixture = new Fixture();
+
+        public static async Task<OmdbSearchResponse> SearchMovie()
+        {
+            await Task.Delay(100);
+            return _Fixture.Create<OmdbSearchResponse>();
         }
     }
 }
