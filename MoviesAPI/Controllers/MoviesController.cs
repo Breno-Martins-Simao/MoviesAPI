@@ -39,7 +39,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet()]
-        public ActionResult<List<Movie>> GetMovies()
+        public ActionResult<List<Movie>> GetMoviesFromDb()
         {
             var movies = _dbService.GetMovies();
             if (movies.Count == 0) return NoContent();
