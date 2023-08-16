@@ -23,5 +23,11 @@ namespace MoviesApi.Tests.Mock
             var movies = _Fixture.Create<List<Movie>>();
             return movies;
         }
+
+        public static List<Movie> GetMoviesEmpty()
+        {
+            var movies = new List<Movie>();
+            return movies;
+        }
     }
 }
