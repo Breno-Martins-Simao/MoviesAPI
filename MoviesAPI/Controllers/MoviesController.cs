@@ -34,7 +34,10 @@ namespace MoviesAPI.Controllers
         public async Task<ActionResult<List<SearchHistory>>> GetHistory()
         {
             var searches = _dbService.GetSearches();
-            if (searches.Count == 0) return NoContent();
+            if (searches.Count == 0)
+            {
+                return NoContent();
+            }
             return Ok(searches);
         }
 

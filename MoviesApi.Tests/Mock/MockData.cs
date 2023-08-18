@@ -19,6 +19,12 @@ namespace MoviesApi.Tests.Mock
             return searchs;
         }
 
+        public static List<SearchHistory> GetEmptySearches()
+        {
+            var searchs = new List<SearchHistory>();
+            return searchs;
+        }
+
         public static List<Movie> GetMovies()
         {
             var movies = _Fixture.Create<List<Movie>>();
