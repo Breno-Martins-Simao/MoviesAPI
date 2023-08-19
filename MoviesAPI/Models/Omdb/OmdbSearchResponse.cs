@@ -24,7 +24,8 @@ namespace MoviesAPI.Models.Omdb
         public string? imdbId { get; set; }
         public string? Type { get; set; }
         public string? totalSeasson { get; set; }
-        public string? Response { get; set; }
+#nullable disable
+        public string Response { get; set; }
         public List<Ratings>? Ratings { get; set; }
     }
 }

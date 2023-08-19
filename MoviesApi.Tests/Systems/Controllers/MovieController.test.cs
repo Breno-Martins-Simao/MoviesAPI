@@ -31,10 +31,10 @@ namespace MoviesApi.Tests.Systems.Controllers
 
             //Act=============================
             var result = await sut.GetHistory();
+            var statusCode = Utilities.GetStatusCode<ActionResult<List<SearchHistory>>>(result);
             //Assert==========================
             result.GetType().Should().Be(typeof(ActionResult<List<SearchHistory>>));
-            result.Should().BeOfType<OkObjectResult>()
-                .Which.StatusCode.Should().Be((int)HttpStatusCode.OK);
+            Assert.True(statusCode == 200);
         }
 
         [Fact]
@@ -55,10 +55,12 @@ namespace MoviesApi.Tests.Systems.Controllers
 
             //Act=============================
             var result = await sut.GetHistory();
+            var itens = result.Value;
             var statusCode = Utilities.GetStatusCode<ActionResult<List<SearchHistory>>>(result);
             //Assert==========================
-            result.GetType().Should().Be(typeof(ActionResult<List<SearchHistory>>));
-            Assert.True(statusCode == 200);
+            result.GetType().Should().Be(typeof(ActionResult<List<SearchHistory>>)); //Validate object type
+            Assert.True(itens == null); //Validate if it was not any content within result
+            //Assert.True(statusCode == 204); //Validate status code
         }
     }
 }

@@ -24,9 +24,10 @@ namespace MoviesAPI.Controllers
         [Route("Search/{query}")]
         public async Task<ActionResult<OmdbSearchResponse>> GetMovie(string query)
         {
-            var response = await _moviesService.SearchMovie(query);
-            _dbService.SaveSearch(response, query);
-            return Ok(response);
+            var movieFounded = await _moviesService.SearchMovie(query);
+            _dbService.SaveSearch(movieFounded, query);
+            if (movieFounded.Response.Equals("False")) return NoContent();
+            return Ok(movieFounded);
         }
 
         [HttpGet()]
@@ -34,10 +35,7 @@ namespace MoviesAPI.Controllers
         public async Task<ActionResult<List<SearchHistory>>> GetHistory()
         {
             var searches = _dbService.GetSearches();
-            if (searches.Count == 0)
-            {
-                return NoContent();
-            }
+            if (searches.Count == 0) return NoContent();
             return Ok(searches);
         }
 
