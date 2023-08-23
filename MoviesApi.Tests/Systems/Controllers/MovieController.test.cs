@@ -1,13 +1,9 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Moq;
 using MoviesApi.Tests.Mock;
 using MoviesAPI.Controllers;
-using MoviesAPI.Interfaces;
 using MoviesAPI.Models.Database;
 using MoviesApi.Tests.Utils;
-using System.Net;
 
 namespace MoviesApi.Tests.Systems.Controllers
 {
